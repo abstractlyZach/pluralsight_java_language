@@ -3,6 +3,7 @@ package com.pluralsight.myapp;
 import com.pluralsight.calcengine.Adder;
 import com.pluralsight.calcengine.Divider;
 import com.pluralsight.calcengine.DynamicHelper;
+import com.pluralsight.calcengine.InvalidStatementException;
 import com.pluralsight.calcengine.MathProcessing;
 import com.pluralsight.calcengine.Multiplier;
 import com.pluralsight.calcengine.PowerOf;
@@ -13,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
         String[] statements = {
-//                "add 1.0",       // Error: incorrect number of values
+                "add 1.0",       // Error: incorrect number of values
 //                "add xx 26.0",   // Error: non-numeric data
 //                "addX 0.0 0.0",  // Error: invalid command
                 "divide 100 50",
@@ -33,8 +34,15 @@ public class Main {
 
         DynamicHelper helper = new DynamicHelper(operations);
 
+        String output;
         for (String statement : statements) {
-            String output = helper.process(statement);
+            try {
+                output = helper.process(statement);
+            }
+            catch (InvalidStatementException e) {
+                System.out.println(e);
+                continue;
+            }
             System.out.println(output);
         }
 

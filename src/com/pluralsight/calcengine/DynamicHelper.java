@@ -7,10 +7,13 @@ public class DynamicHelper {
         this.handlers = handlers;
     }
 
-    public String process(String statement) {
+    public String process(String statement) throws InvalidStatementException {
         // IN: add 1.0 2.0
         // OUT: 1.0 + 2.0 = 3.0
         String[] parts = statement.split(MathProcessing.SEPARATOR);
+        if (parts.length != 3) {
+            throw new InvalidStatementException("Need more information", statement);
+        }
         String keyword = parts[0]; // add
 
         MathProcessing theHandler = null;
