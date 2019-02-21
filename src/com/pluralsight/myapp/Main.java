@@ -15,7 +15,7 @@ public class Main {
 
         String[] statements = {
                 "add 1.0",       // Error: incorrect number of values
-//                "add xx 26.0",   // Error: non-numeric data
+                "add xx 26.0",   // Error: non-numeric data
 //                "addX 0.0 0.0",  // Error: invalid command
                 "divide 100 50",
                 "add 25 92",
@@ -40,7 +40,7 @@ public class Main {
                 output = helper.process(statement);
             }
             catch (InvalidStatementException e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
                 continue;
             }
             System.out.println(output);

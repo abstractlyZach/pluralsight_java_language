@@ -12,7 +12,7 @@ public class DynamicHelper {
         // OUT: 1.0 + 2.0 = 3.0
         String[] parts = statement.split(MathProcessing.SEPARATOR);
         if (parts.length != 3) {
-            throw new InvalidStatementException("Need more information", statement);
+            throw new InvalidStatementException("Incorrect number of fields", statement);
         }
         String keyword = parts[0]; // add
 
@@ -26,8 +26,16 @@ public class DynamicHelper {
             }
         }
 
-        double leftVal = Double.parseDouble(parts[1]); // 1.0
-        double rightVal = Double.parseDouble(parts[2]); // 2.0
+        double leftVal;
+        double rightVal;
+
+        try {
+            leftVal = Double.parseDouble(parts[1]); // 1.0
+            rightVal = Double.parseDouble(parts[2]); // 2.0
+        }
+        catch (NumberFormatException e) {
+            throw new InvalidStatementException("Non-numeric data", statement, e);
+        }
 
         double result = theHandler.doCalculation(leftVal, rightVal);
 
