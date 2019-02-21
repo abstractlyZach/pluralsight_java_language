@@ -1,14 +1,18 @@
 package com.pluralsight.calcengine;
 
-public class Subtractor extends CalculateBase {
-    public Subtractor() {}
-    public Subtractor(double leftVal, double rightVal) {
-        super(leftVal, rightVal);
+public class Subtractor implements MathProcessing {
+    @Override
+    public String getKeyword() {
+        return "subtract";
     }
 
     @Override
-    public void calculate() {
-        double value = getLeftVal() - getRightVal();
-        setResult(value);
+    public char getSymbol() {
+        return '-';
+    }
+
+    @Override
+    public double doCalculation(double leftVal, double rightVal) {
+        return leftVal - rightVal;
     }
 }

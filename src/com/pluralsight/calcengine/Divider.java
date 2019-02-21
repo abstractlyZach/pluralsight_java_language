@@ -1,15 +1,19 @@
 package com.pluralsight.calcengine;
 
-public class Divider extends CalculateBase {
-    public Divider() {}
-    public Divider(double leftVal, double rightVal) {
-        super(leftVal, rightVal);
+public class Divider implements MathProcessing {
+    @Override
+    public String getKeyword() {
+        return "divide";
     }
 
     @Override
-    public void calculate() {
-        double value = getRightVal() != 0.0d ? getLeftVal() / getRightVal() : 0.0d;
-        setResult(value);
+    public char getSymbol() {
+        return '/';
+    }
+
+    @Override
+    public double doCalculation(double leftVal, double rightVal) {
+        return leftVal / rightVal;
     }
 }
 

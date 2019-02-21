@@ -1,14 +1,19 @@
 package com.pluralsight.calcengine;
 
-public class Multiplier extends CalculateBase {
-    public Multiplier() {}
-    public Multiplier(double leftVal, double rightVal) {
-        super(leftVal, rightVal);
+public class Multiplier implements MathProcessing {
+
+    @Override
+    public String getKeyword() {
+        return "multiply";
     }
 
     @Override
-    public void calculate() {
-        double value = getLeftVal() * getRightVal();
-        setResult(value);
+    public char getSymbol() {
+        return '*';
+    }
+
+    @Override
+    public double doCalculation(double leftVal, double rightVal) {
+        return leftVal * rightVal;
     }
 }
