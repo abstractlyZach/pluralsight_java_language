@@ -25,6 +25,9 @@ public class DynamicHelper {
                 break;
             }
         }
+        if (theHandler == null) {
+            throw new InvalidStatementException("Invalid command", statement);
+        }
 
         double leftVal;
         double rightVal;

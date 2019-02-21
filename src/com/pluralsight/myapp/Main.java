@@ -16,7 +16,7 @@ public class Main {
         String[] statements = {
                 "add 1.0",       // Error: incorrect number of values
                 "add xx 26.0",   // Error: non-numeric data
-//                "addX 0.0 0.0",  // Error: invalid command
+                "addX 0.0 0.0",  // Error: invalid command
                 "divide 100 50",
                 "add 25 92",
                 "power 5.0 2.0",
